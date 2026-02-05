@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Scraper - Extract Data from Any Website</title>
+    <meta name="description" content="General-purpose web scraper that extracts text, images, links, and tables from any website">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>🌐 Web Scraper</h1>
+            <p class="subtitle">Extract all data from any website instantly</p>
+        </header>
+
+        <!-- Input Section -->
+        <div class="input-section">
+            <form id="scrapeForm">
+                <div class="input-group">
+                    <input 
+                        type="url" 
+                        id="urlInput" 
+                        placeholder="Enter website URL (e.g., https://example.com)" 
+                        required
+                    >
+                    <button type="submit" id="scrapeBtn">
+                        Scrape Website
+                    </button>
+                </div>
+            </form>
+            
+            <div class="example-urls">
+                <span style="color: var(--text-muted); font-size: 0.875rem;">Try examples:</span>
+                <button class="example-btn" data-url="https://en.wikipedia.org/wiki/Web_scraping">Wikipedia</button>
+                <button class="example-btn" data-url="https://news.ycombinator.com/">Hacker News</button>
+                <button class="example-btn" data-url="https://www.bbc.com/news">BBC News</button>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p class="loading-text">Scraping website...</p>
+        </div>
+
+        <!-- Error Message -->
+        <div class="error-message" id="errorMessage"></div>
+
+        <!-- Results Section -->
+        <div class="results-section" id="resultsSection">
+            <!-- Statistics -->
+            <div class="stats-grid" id="statsGrid"></div>
+
+            <!-- Tabs -->
+            <div class="tabs" id="tabs">
+                <button class="tab-btn active" data-tab="metadata">Metadata</button>
+                <button class="tab-btn" data-tab="headings">Headings</button>
+                <button class="tab-btn" data-tab="paragraphs">Paragraphs</button>
+                <button class="tab-btn" data-tab="images">Images</button>
+                <button class="tab-btn" data-tab="links">Links</button>
+                <button class="tab-btn" data-tab="tables">Tables</button>
+            </div>
+
+            <!-- Tab Contents -->
+            <div id="tabContents">
+                <!-- Metadata Tab -->
+                <div class="tab-content active" id="metadata-tab">
+                    <div class="card">
+                        <h2 class="card-title">Page Metadata</h2>
+                        <div class="metadata-grid" id="metadataContent"></div>
+                    </div>
+                </div>
+
+                <!-- Headings Tab -->
+                <div class="tab-content" id="headings-tab">
+                    <div class="card">
+                        <h2 class="card-title">Page Headings</h2>
+                        <div class="headings-list" id="headingsContent"></div>
+                    </div>
+                </div>
+
+                <!-- Paragraphs Tab -->
+                <div class="tab-content" id="paragraphs-tab">
+                    <div class="card">
+                        <h2 class="card-title">Paragraphs</h2>
+                        <div class="paragraphs-list" id="paragraphsContent"></div>
+                    </div>
+                </div>
+
+                <!-- Images Tab -->
+                <div class="tab-content" id="images-tab">
+                    <div class="card">
+                        <h2 class="card-title">Images</h2>
+                        <div class="images-grid" id="imagesContent"></div>
+                    </div>
+                </div>
+
+                <!-- Links Tab -->
+                <div class="tab-content" id="links-tab">
+                    <div class="card">
+                        <h2 class="card-title">Links</h2>
+                        <div style="margin-bottom: 2rem;">
+                            <h3 style="color: var(--accent-primary); margin-bottom: 1rem;">Internal Links</h3>
+                            <div class="links-list" id="internalLinksContent"></div>
+                        </div>
+                        <div>
+                            <h3 style="color: var(--accent-secondary); margin-bottom: 1rem;">External Links</h3>
+                            <div class="links-list" id="externalLinksContent"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tables Tab -->
+                <div class="tab-content" id="tables-tab">
+                    <div class="card">
+                        <h2 class="card-title">Tables</h2>
+                        <div class="tables-container" id="tablesContent"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
